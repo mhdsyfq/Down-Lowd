@@ -28,7 +28,7 @@ struct ContentView: View {
                     }
                     .padding()
                     .foregroundColor(.white)
-                    .background(RoundedRectangle(cornerRadius: 5).fill(.gray))
+                    .background(RoundedRectangle(cornerRadius: 5).fill(Color.accentColor))
                 }
                 
                 NavigationLink {
@@ -43,7 +43,7 @@ struct ContentView: View {
                     }
                     .padding()
                     .foregroundColor(.white)
-                    .background(RoundedRectangle(cornerRadius: 5).fill(.gray))
+                    .background(RoundedRectangle(cornerRadius: 5).fill(Color.accentColor))
                 }
             }
         }
@@ -55,5 +55,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            
     }
 }

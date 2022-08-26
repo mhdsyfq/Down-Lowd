@@ -30,12 +30,12 @@ struct EntryView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .accentColor(.gray)
     }
 }
 
 struct EntryView_Previews: PreviewProvider {
     static var previews: some View {
         EntryView()
+            
     }
 }
