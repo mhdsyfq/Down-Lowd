@@ -29,6 +29,8 @@ struct EntryView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .accentColor(.gray)
     }
 }
 

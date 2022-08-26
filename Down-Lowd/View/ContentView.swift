@@ -9,8 +9,46 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack(spacing: 40) {
+            Text("Hello, what would you like to do?")
+                .font(.title3)
+                .fontWeight(.light)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+            VStack(spacing: 10) {
+                NavigationLink {
+                    
+                } label: {
+                    HStack {
+                        Spacer()
+                        
+                        Text("Download a File")
+                        
+                        Spacer()
+                    }
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(RoundedRectangle(cornerRadius: 5).fill(.gray))
+                }
+                
+                NavigationLink {
+                    
+                } label: {
+                    HStack {
+                        Spacer()
+                        
+                        Text("View List")
+                        
+                        Spacer()
+                    }
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(RoundedRectangle(cornerRadius: 5).fill(.gray))
+                }
+            }
+        }
+        .navigationBarHidden(true)
+        .padding()
     }
 }
 
