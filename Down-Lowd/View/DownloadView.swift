@@ -52,7 +52,7 @@ struct DownloadView: View {
                                 .padding(.leading, 12)
                                 .frame(height: 100)
                                 .overlay(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 1))
-                                .onChange(of: self.rm.description, perform: {
+                                .onChange(of: self.rm.desc, perform: {
                                     self.rm.desc = String($0.prefix(100))
                                 })
                         }

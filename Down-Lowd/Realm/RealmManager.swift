@@ -22,7 +22,7 @@ class RealmManager: NSObject, ObservableObject, URLSessionDownloadDelegate, UIDo
     
     @Published var selectedType = "Image"
     @Published var isExpanded = false
-    var contentTypes = ["Image", "Video", "PDF", "Others"]
+    var contentTypes = ["Image", "Audio", "Video", "PDF", "Others"]
     
     @Published var downloadProgress: CGFloat = 0
     @Published var isShowingProgress = false

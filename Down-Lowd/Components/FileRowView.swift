@@ -18,7 +18,7 @@ struct FileRowView: View {
                     .fontWeight(.semibold)
                     .multilineTextAlignment(.leading)
                 
-                Text(file.type)
+                Text(file.type.uppercased())
                     .foregroundColor(.gray)
                 
                 Text(file.desc)

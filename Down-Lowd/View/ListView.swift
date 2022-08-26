@@ -11,11 +11,17 @@ struct ListView: View {
     @EnvironmentObject var rm: RealmManager
     
     var body: some View {
-        List(rm.files) { file in
-            Button {
-                rm.openFile(name: file.name)
-            } label: {
-                FileRowView(file: file)
+        VStack {
+            if rm.files.isEmpty {
+                Text("You have not downloaded any files yet!")
+            } else {
+                List(rm.files) { file in
+                    Button {
+                        rm.openFile(name: file.name)
+                    } label: {
+                        FileRowView(file: file)
+                    }
+                }
             }
         }
         .navigationTitle("Downloaded Files")
