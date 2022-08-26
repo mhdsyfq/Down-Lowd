@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 import SwiftUI
 
-class RealmManager: NSObject, ObservableObject, URLSessionDownloadDelegate {
+class RealmManager: NSObject, ObservableObject, URLSessionDownloadDelegate, UIDocumentInteractionControllerDelegate {
     private(set) var localRealm: Realm?
     @Published private(set) var files: [File] = []
     
@@ -172,6 +172,25 @@ class RealmManager: NSObject, ObservableObject, URLSessionDownloadDelegate {
                 self.files.append(file)
             }
         }
+    }
+    
+    func openFile(name: String) {
+        let manager = FileManager.default
+        
+        guard let path = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return
+        }
+        
+        let destination = path.appendingPathComponent(name)
+        
+        let controller = UIDocumentInteractionController(url: destination)
+        
+        controller.delegate = self
+        controller.presentPreview(animated: true)
+    }
+    
+    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+        return UIApplication.shared.windows.first!.rootViewController!
     }
     
     func clearValues() {

@@ -13,7 +13,7 @@ struct ListView: View {
     var body: some View {
         List(rm.files) { file in
             Button {
-                
+                rm.openFile(name: file.name)
             } label: {
                 FileRowView(file: file)
             }
