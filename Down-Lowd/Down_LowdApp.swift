@@ -11,7 +11,7 @@ import SwiftUI
 struct Down_LowdApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            EntryView()
         }
     }
 }
