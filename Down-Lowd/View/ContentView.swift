@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var rm = RealmManager()
+    
     var body: some View {
         VStack(spacing: 40) {
             Text("Hello, what would you like to do?")
@@ -18,6 +20,7 @@ struct ContentView: View {
             VStack(spacing: 10) {
                 NavigationLink {
                     DownloadView()
+                        .environmentObject(rm)
                 } label: {
                     HStack {
                         Spacer()
@@ -33,6 +36,7 @@ struct ContentView: View {
                 
                 NavigationLink {
                     ListView()
+                        .environmentObject(rm)
                 } label: {
                     HStack {
                         Spacer()

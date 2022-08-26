@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct ListView: View {
+    @EnvironmentObject var rm: RealmManager
+    
     var body: some View {
-        List {
-            FileRowView(name: "syafiq.pdf", description: "this is my pdf", type: "PDF")
-            
-            FileRowView(name: "syafiq.pdf", description: "this is my pdf", type: "PDF")
-            
-            FileRowView(name: "syafiq.pdf", description: "this is my pdf", type: "PDF")
+        List(rm.files) { file in
+            Button {
+                
+            } label: {
+                FileRowView(file: file)
+            }
         }
         .navigationTitle("Downloaded Files")
         .navigationBarTitleDisplayMode(.inline)
@@ -24,5 +26,6 @@ struct ListView: View {
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
         ListView()
+            .environmentObject(RealmManager())
     }
 }

@@ -8,35 +8,35 @@
 import SwiftUI
 
 struct FileRowView: View {
-    let name: String
-    let description: String
-    let type: String
+    let file: File
     
     var body: some View {
-        HStack {
+        HStack(spacing: 15) {
             VStack(alignment: .leading, spacing: 5) {
-                Text(name)
+                Text(file.name)
                     .font(.title3)
                     .fontWeight(.semibold)
+                    .multilineTextAlignment(.leading)
                 
-                Text(type)
+                Text(file.type)
                     .foregroundColor(.gray)
                 
-                Text(description)
+                Text(file.desc)
+                    .multilineTextAlignment(.leading)
                     .foregroundColor(.gray)
             }
             
             Spacer()
+            
+            Text("View")
+                .foregroundColor(.accentColor)
         }
+        .padding(5)
     }
 }
 
 struct FileRowView_Previews: PreviewProvider {
-    static var name = "haha.pdf"
-    static var description = "idk what pdf this is"
-    static var type = "PDF"
-    
     static var previews: some View {
-        FileRowView(name: self.name, description: self.description, type: self.type)
+        FileRowView(file: File(value: ["name": "hello.pdf", "desc": "This is a description", "type": "PDF"]))
     }
 }
