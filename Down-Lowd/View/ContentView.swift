@@ -32,7 +32,7 @@ struct ContentView: View {
                 }
                 
                 NavigationLink {
-                    
+                    ListView()
                 } label: {
                     HStack {
                         Spacer()
