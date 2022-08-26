@@ -17,7 +17,7 @@ struct ContentView: View {
             
             VStack(spacing: 10) {
                 NavigationLink {
-                    
+                    DownloadView()
                 } label: {
                     HStack {
                         Spacer()
