@@ -26,6 +26,10 @@ struct ListView: View {
         }
         .navigationTitle("Downloaded Files")
         .navigationBarTitleDisplayMode(.inline)
+        .alert(isPresented: self.$rm.isShowingAlert) {
+            Alert(title: Text(self.rm.alertTitle), message: Text(self.rm.alertMessage), dismissButton: .destructive(Text("OK")) {
+            })
+        }
     }
 }
 

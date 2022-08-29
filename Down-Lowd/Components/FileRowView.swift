@@ -30,6 +30,7 @@ struct FileRowView: View {
             
             Text("View")
                 .foregroundColor(.accentColor)
+                .fontWeight(.semibold)
         }
         .padding(5)
     }

@@ -63,7 +63,7 @@ struct DownloadView: View {
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.leading, 5)
                             
-                            DisclosureGroup(self.rm.selectedType, isExpanded: self.$rm.isExpanded) {
+                            DisclosureGroup(isExpanded: self.$rm.isExpanded) {
                                 Divider()
                                     .padding(.vertical, 5)
                                 
@@ -72,6 +72,7 @@ struct DownloadView: View {
                                         self.rm.selectedType = ct
                                         
                                         withAnimation {
+                                            hideKeyboard()
                                             self.rm.isExpanded.toggle()
                                         }
                                     } label: {
@@ -83,6 +84,20 @@ struct DownloadView: View {
                                             
                                             Spacer()
                                         }
+                                    }
+                                }
+                            } label: {
+                                HStack {
+                                    Text(self.rm.selectedType)
+                                    
+                                    Spacer()
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    withAnimation {
+                                        hideKeyboard()
+                                        self.rm.isExpanded.toggle()
                                     }
                                 }
                             }
@@ -137,6 +152,7 @@ struct DownloadView: View {
 struct DownloadView_Previews: PreviewProvider {
     static var previews: some View {
         DownloadView()
+            .environmentObject(RealmManager())
     }
 }
 

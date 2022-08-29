@@ -24,6 +24,9 @@ struct EntryView: View {
             }
             .navigationBarHidden(true)
             .onAppear {
+                
+                // Auto switch to ContentView
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     self.isActive.toggle()
                 }

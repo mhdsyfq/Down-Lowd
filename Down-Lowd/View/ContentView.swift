@@ -15,6 +15,7 @@ struct ContentView: View {
             Text("Hello, what would you like to do?")
                 .font(.title3)
                 .fontWeight(.light)
+                .multilineTextAlignment(.center)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
             VStack(spacing: 10) {

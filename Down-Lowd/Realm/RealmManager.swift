@@ -38,7 +38,6 @@ class RealmManager: NSObject, ObservableObject, URLSessionDownloadDelegate, UIDo
     func openRealm() {
         do {
             let config = Realm.Configuration(schemaVersion: 1)
-            
             Realm.Configuration.defaultConfiguration = config
             
             localRealm = try Realm()
@@ -48,17 +47,18 @@ class RealmManager: NSObject, ObservableObject, URLSessionDownloadDelegate, UIDo
     }
     
     func downloadAndAddFile() {
+        // to allow for unicode characters
+        self.urlString = self.urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+        
         guard let url = URL(string: self.urlString) else {
             self.showAlert(title: "Error", message: "invalid URL")
             return
         }
         
         let manager = FileManager.default
-        
         guard let path = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
         }
-        
         let destination = path.appendingPathComponent(url.lastPathComponent)
         
         if manager.fileExists(atPath: destination.path) {
@@ -85,16 +85,13 @@ class RealmManager: NSObject, ObservableObject, URLSessionDownloadDelegate, UIDo
         }
         
         let manager = FileManager.default
-        
         guard let path = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
         }
-        
         let destination = path.appendingPathComponent(url.lastPathComponent)
         
         do {
             try manager.copyItem(at: location, to: destination)
-            
             print("Successfully downloaded!")
             
             DispatchQueue.main.async {
@@ -109,6 +106,7 @@ class RealmManager: NSObject, ObservableObject, URLSessionDownloadDelegate, UIDo
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         DispatchQueue.main.async {
+            // check if content length provided
             if CGFloat(totalBytesExpectedToWrite) == -1.0 {
                 self.downloadProgress = -1.0
             } else {
@@ -176,15 +174,12 @@ class RealmManager: NSObject, ObservableObject, URLSessionDownloadDelegate, UIDo
     
     func openFile(name: String) {
         let manager = FileManager.default
-        
         guard let path = manager.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return
         }
-        
         let destination = path.appendingPathComponent(name)
         
         let controller = UIDocumentInteractionController(url: destination)
-        
         controller.delegate = self
         controller.presentPreview(animated: true)
     }

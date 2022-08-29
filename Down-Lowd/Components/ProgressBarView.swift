@@ -16,13 +16,17 @@ struct ProgressBarView: View {
                 .opacity(0.25)
                 .ignoresSafeArea()
             
-            VStack(spacing: 20) {
+            VStack(spacing: 0) {
                 if rm.downloadProgress == -1.0 {
-                    ProgressView()
-                        .scaleEffect(1.5)
-                    
-                    Text("Unknown file size. Downloading...")
-                        .multilineTextAlignment(.center)
+                    VStack(spacing: 20) {
+                        ProgressView()
+                            .scaleEffect(1.5)
+                        
+                        Text("Unknown file size. Downloading...")
+                            .multilineTextAlignment(.center)
+                    }
+                    .frame(height: 100)
+                    .padding(20)
                 } else {
                     ZStack {
                         Circle()
@@ -38,8 +42,8 @@ struct ProgressBarView: View {
                         
                         Text("\(Int(rm.downloadProgress * 100))%")
                     }
-                    .frame(width: 80, height: 80)
-                    .padding(.vertical, 20)
+                    .frame(width: 80, height: 100)
+                    .padding(20)
                 }
                 
                 Divider()
@@ -50,9 +54,11 @@ struct ProgressBarView: View {
                     Text("Cancel")
                         .font(.body)
                         .fontWeight(.semibold)
+                        .foregroundColor(.blue)
                 }
+                .padding(15)
             }
-            .frame(width: 200, height: 200)
+            .frame(width: 200)
             .background(Color.white)
             .cornerRadius(8)
         }
