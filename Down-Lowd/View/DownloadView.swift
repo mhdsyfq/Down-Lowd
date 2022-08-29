@@ -134,7 +134,7 @@ struct DownloadView: View {
                     .environmentObject(rm)
             }
         }
-        .navigationTitle("Download a File")
+        .navigationTitle("Download File")
         .navigationBarTitleDisplayMode(.inline)
         .onTapGesture {
             hideKeyboard()

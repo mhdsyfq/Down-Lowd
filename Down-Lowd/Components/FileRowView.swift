@@ -29,6 +29,7 @@ struct FileRowView: View {
             Spacer()
             
             Text("View")
+                .underline()
                 .foregroundColor(.accentColor)
                 .fontWeight(.semibold)
         }

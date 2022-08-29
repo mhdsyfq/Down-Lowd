@@ -26,7 +26,7 @@ struct ContentView: View {
                     HStack {
                         Spacer()
                         
-                        Text("Download a File")
+                        Text("Download File")
                         
                         Spacer()
                     }
