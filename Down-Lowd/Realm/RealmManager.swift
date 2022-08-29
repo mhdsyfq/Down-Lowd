@@ -181,7 +181,9 @@ class RealmManager: NSObject, ObservableObject, URLSessionDownloadDelegate, UIDo
         
         let controller = UIDocumentInteractionController(url: destination)
         controller.delegate = self
-        controller.presentPreview(animated: true)
+        if !controller.presentPreview(animated: true) {
+            showAlert(title: "Error", message: "file not supported")
+        }
     }
     
     func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
